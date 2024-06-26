@@ -6,12 +6,32 @@
     <title>404 Not Found</title>
     <script>
       var path = window.location.pathname
+
+      function hasNoUppercase(str) {
+        return !/[A-Z]/.test(str)
+      }
+
+      if (hasNoUppercase(path.slice(2))) {
+        console.log('Case 2 - load Repo Name URL')
+        function redirect() {
+          window.location.href = '/agk-tec_website_public/'
+        }
+
+        setTimeout(redirect(), 3000)
+      }
+      console.log('Case 1 - load URL in lower case')
       var newPath = path.toLowerCase()
-      window.location.replace(newPath)
+      console.log('Load this URL: ' + newPath)
+
+      function tryLoadInLowerCase() {
+        window.location.replace(newPath)
+      }
+      setTimeout(tryLoadInLowerCase, 100)
     </script>
   </head>
   <body style="background-color: black; color: white">
     <h1>404 Not Found</h1>
     <p>Page not found. Redirecting...</p>
+    <p><i>Wait 3 seconds</i></p>
   </body>
 </html>
